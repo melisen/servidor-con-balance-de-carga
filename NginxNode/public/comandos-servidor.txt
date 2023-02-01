@@ -1,0 +1,35 @@
+//comandos para levantar el servidor 
+
+------------------------------- PM2 -------------------------------------------------------------
+--> iniciar servidor con pm2 modo cluster (terminal desde carpeta NginxNode):
+pm2 start server.js --name="pruebaCluster" --watch -i max -- -- 8080
+
+--> iniciar servido con pm2 modo fork(terminal desde carpeta NginxNode) (si se va a hacer a la par de otro servidor iniciado, cambiar el puerto):
+pm2 start server.js --name="pruebaFork" --watch -- -- 8080
+
+--> listar los servidores:
+pm2 list
+
+--> terminar ejecución de un worker:
+pm2 stop <id del worker>
+
+--> frenar todos los servidores de pm2:
+pm2 stop all
+
+--> eliminar todos los servidores de pm2:
+pm2 delete all
+
+------------- Nginx -----------------------------------------------------------------------
+--> ejecutar nginx:
+pararme en la carpeta donde se encuentra el archivo ejecutable y escribir por terminal:
+./nginx.exe
+
+--> volver a cargar el servidor luego de haber hecho cambios en el archivo de configuración de nginx:
+./nginx.exe -s reload
+
+--> ver cuántos servidores de Nginx están prendidos
+tasklist /fi "imagename eq nginx.exe"
+
+--> matar un servidor según puerto:
+taskkill /F /PID <port>
+
